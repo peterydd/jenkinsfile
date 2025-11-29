@@ -1,14 +1,10 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.9.9-amazoncorretto-21-debian'
-            args '-v /home/peter/docker/jenkins/mvnm2:/root/.m2'
-        }
-    }
+    agent { dockerfile true }
     stages {
-        stage('Build') {
+        stage('Test') {
             steps {
-                sh 'mvn -version'
+                sh 'node --version'
+                sh 'svn --version'
             }
         }
     }
